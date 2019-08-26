@@ -7,7 +7,9 @@ const App = () => {
 
   const [pokemon, setPokemon] = useState();
   const [search, setSearch] = useState('');
-  const [query, setQuery] = useState('bulbasaur')
+  const [query, setQuery] = useState('bulbasaur');
+  const [weakness, setWeakness] = useState('');
+  const [types, setTypes] = useState([]);
 
   useEffect(() => {
     getPokemon();
@@ -18,11 +20,31 @@ const App = () => {
     if (response.status === 200) {
       const data = await response.json();
       setPokemon(data);
+      console.log(data);
+      weaknessType(data.types[0].type.name);
+      setTypes(data.types);
+
+
+
+
     } else {
       alert("Sorry, we couldn't find that pokemon. Please try again.");
     }
 
   };
+
+  const weaknessType = async (chosenPokeType) => {
+    const response = await fetch(`https://pokeapi.co/api/v2/type/${chosenPokeType}`)
+    if (response.status === 200) {
+      const data = await response.json();
+      setWeakness(data.damage_relations.double_damage_from[0].name);
+
+    } else {
+      alert("Sorry, we couldn't find the weakness");
+    }
+
+  };
+
 
 
   const updateSearch = e => {
@@ -48,9 +70,10 @@ const App = () => {
           < Card
             key={pokemon.name}
             title={pokemon.name}
-            type={pokemon.types[0].type.name}
+            type2={types}
             image={pokemon.sprites.front_default}
             hp={pokemon.stats[0].base_stat}
+            weakness={weakness}
           />
         ) : (
             <p>Loading pokemon</p>
