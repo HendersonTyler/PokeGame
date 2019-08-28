@@ -1,0 +1,31 @@
+Choose your pokemon
+    search
+
+Random pokemon
+    name
+    type
+    HP
+    strong against
+    weak against
+    img
+    
+
+Comapre
+
+    (double damage from, double damage to, half damage to, half damage from, no damage to, no damage from)
+
+    if pokemon a ndf = pokemon b win
+    if pokemon a ndt = pokemon b lose 
+    if pokemon a ddfrom = pokemon b LOSE
+    if pokemon a ddto = pokemon b win
+    if pokemon a hdt = pokemon b lose
+    if pokemon a hdf = pokemon b win
+    if pokemon a HP < pokemon b HP lose
+
+    
+    You win
+        +1
+        or
+    You lose
+
+Sumbit score + name
