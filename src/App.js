@@ -10,7 +10,7 @@ const App = () => {
 
   const [chosenPokemon, setchosenPokemon] = useState('bulbasaur');
   const [yourPokemonData, setyourPokemonData] = useState();
-  const [yourWeakness, setyourWeakness] = useState();
+  const [yourWeakness, setyourWeakness] = useState([]);
   const [yourTypes, setyourTypes] = useState([]);
 
 
