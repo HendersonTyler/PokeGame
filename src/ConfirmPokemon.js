@@ -23,22 +23,28 @@ const ConfirmPokemon = ({ yourPokemon, setyourPokemonData, yourPokemonData, your
 
 
     const weaknessType = (chosenPokeType) => {
-
+        let h = [];
         chosenPokeType.map(async (x, i) => {
-            let h = [];
-            let y = x.type.name;
-            const response = await fetch(`https://pokeapi.co/api/v2/type/${y}`)
+            const response = await fetch(`https://pokeapi.co/api/v2/type/${x.type.name}`)
             if (response.status === 200) {
                 const data = await response.json();
                 let z = data.damage_relations.double_damage_from;
                 z.map((q, j) => {
                     h.push(q.name);
+                    setTimeout(function () { setyourWeakness(h); }, 3000);
+
+
+
 
                 })
-                setyourWeakness(h);
-            } else {
+
+
+
+            }
+            else {
                 alert("Sorry, we couldn't find the weakness");
             }
+
 
 
         })
@@ -60,9 +66,10 @@ const ConfirmPokemon = ({ yourPokemon, setyourPokemonData, yourPokemonData, your
                     })
                     }
                     </p>
-
+                    {console.log(yourWeakness)}
                     <p>Weakness:
                         {yourWeakness.map((feature, i) => {
+                        console.log(feature);
                         return (
                             ' ' + feature
                         );
@@ -76,6 +83,8 @@ const ConfirmPokemon = ({ yourPokemon, setyourPokemonData, yourPokemonData, your
             ) : (
                     <p>Loading pokemon</p>
                 )}
+            <button>Choose again</button>
+            <button>Confirm</button>
         </div>
     )
 };
