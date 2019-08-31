@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { Link } from 'react-router-dom';
 
 
 const ConfirmPokemon = ({ yourPokemon, setyourPokemonData, yourPokemonData, yourWeakness, yourTypes, setyourWeakness, setyourTypes }) => {
@@ -14,43 +15,31 @@ const ConfirmPokemon = ({ yourPokemon, setyourPokemonData, yourPokemonData, your
             setyourPokemonData(data);
             setyourTypes(data.types);
             weaknessType(data.types);
-
-
         } else {
             alert("Sorry, we couldn't find that pokemon. Please try again.");
         }
     };
 
 
-    const weaknessType = (chosenPokeType) => {
+    const weaknessType = async (chosenPokeType) => {
         let h = [];
-        chosenPokeType.map(async (x, i) => {
-            const response = await fetch(`https://pokeapi.co/api/v2/type/${x.type.name}`)
+        let i;
+        let q;
+        for (i = 0; i < chosenPokeType.length; i++) {
+            const response = await fetch(`https://pokeapi.co/api/v2/type/${chosenPokeType[i].type.name}`)
             if (response.status === 200) {
-                const data = await response.json();
-                let z = data.damage_relations.double_damage_from;
-                z.map((q, j) => {
-                    h.push(q.name);
-                    setTimeout(function () { setyourWeakness(h); }, 3000);
-
-
-
-
-                })
-
-
-
+                if (response.status === 200) {
+                    const data = await response.json();
+                    let z = data.damage_relations.double_damage_from;
+                    for (q = 0; q < z.length; q++) {
+                        h.push(z[q].name);
+                    }
+                } else {
+                    alert("Sorry, we couldn't find the weakness");
+                }
             }
-            else {
-                alert("Sorry, we couldn't find the weakness");
-            }
-
-
-
-        })
-
-
-    }
+        } setyourWeakness(h);
+    };
 
     const name = yourPokemon.charAt(0).toUpperCase() + yourPokemon.slice(1);
 
@@ -66,10 +55,9 @@ const ConfirmPokemon = ({ yourPokemon, setyourPokemonData, yourPokemonData, your
                     })
                     }
                     </p>
-                    {console.log(yourWeakness)}
+
                     <p>Weakness:
                         {yourWeakness.map((feature, i) => {
-                        console.log(feature);
                         return (
                             ' ' + feature
                         );
@@ -83,8 +71,8 @@ const ConfirmPokemon = ({ yourPokemon, setyourPokemonData, yourPokemonData, your
             ) : (
                     <p>Loading pokemon</p>
                 )}
-            <button>Choose again</button>
-            <button>Confirm</button>
+            <Link to="/"><button type="submit">Choose again</button></Link>
+            <Link to="/Play"><button type="submit">Confirm</button></Link>
         </div>
     )
 };
