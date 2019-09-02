@@ -12,6 +12,7 @@ const App = () => {
   const [chosenPokemon, setchosenPokemon] = useState('bulbasaur');
   const [yourPokemonData, setyourPokemonData] = useState();
   const [yourWeakness, setyourWeakness] = useState([]);
+  const [yourStrength, setyourStrength] = useState([]);
   const [yourTypes, setyourTypes] = useState([]);
 
 
@@ -36,11 +37,17 @@ const App = () => {
               yourWeakness={yourWeakness}
               yourTypes={yourTypes}
               setyourWeakness={setyourWeakness}
-              setyourTypes={setyourTypes} />}
+              setyourTypes={setyourTypes}
+              setyourStrength={setyourStrength}
+              yourStrength={yourStrength} />}
           />
 
           <Route path="/Play"
             render={(props) => <Play
+              yourPokemonData={yourPokemonData}
+              yourTypes={yourTypes}
+              yourWeakness={yourWeakness}
+              yourStrength={yourStrength}
             />}
           >
           </Route>
