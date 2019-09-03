@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
 
-const ConfirmPokemon = ({ yourPokemon, setyourPokemonData, yourPokemonData, yourWeakness, yourTypes, setyourWeakness, setyourTypes, setyourStrength, yourStrength }) => {
+const ConfirmPokemon = ({ yourPokemon, setyourPokemonData, yourPokemonData, yourWeakness, yourTypes, setyourWeakness, setyourTypes, setyourStrength, yourStrength, setgameScore }) => {
 
     useEffect(() => {
         storePokemonData();
@@ -47,6 +47,7 @@ const ConfirmPokemon = ({ yourPokemon, setyourPokemonData, yourPokemonData, your
         }
         setyourWeakness(h);
         setyourStrength(w);
+        setgameScore(0);
     };
 
 

@@ -1,13 +1,21 @@
 import React, { useState, useEffect } from 'react';
 import './Play.css';
+import { Link } from 'react-router-dom';
 
-const Play = ({ yourPokemonData, yourTypes, yourWeakness, yourStrength }) => {
+const Play = ({ yourPokemonData, yourWeakness, yourStrength, gameScore, setgameScore }) => {
+
+
 
     useEffect(() => {
         getrandomPokemon();
     }, []);
 
+    const [win, setwin] = useState(false);
+    const [lose, setlose] = useState(false);
     const [randomPokemon, setrandomPokemon] = useState();
+    const [pokemonReady, setpokemonReady] = useState(false);
+
+
 
 
     const getrandomPokemon = async () => {
@@ -16,6 +24,9 @@ const Play = ({ yourPokemonData, yourTypes, yourWeakness, yourStrength }) => {
         if (response.status === 200) {
             const data = await response.json();
             setrandomPokemon(data);
+            setpokemonReady(true);
+            setlose(false);
+            setwin(false);
         } else {
             alert("Sorry, random didn't show");
         }
@@ -24,28 +35,73 @@ const Play = ({ yourPokemonData, yourTypes, yourWeakness, yourStrength }) => {
 
 
     const fight = e => {
-        let gameOver = false;
+
         const enemyType = randomPokemon.types;
+
+        let gameOver = false;
+        setpokemonReady(false);
+
 
         for (let x = 0; x < enemyType.length; x++) {
             let arr = enemyType[x].type.name;
             for (let i = 0; i < yourStrength.length; i++) {
-                if (arr.indexOf(yourStrength[i]) > -1) {
-                    gameOver = true;
-                    console.log("You Win!")
-                    break;
-                }
-            } if (!gameOver) {
-                for (let i = 0; i < yourWeakness.length; i++) {
-                    if (arr.indexOf(yourWeakness[i]) > -1) {
+                if (!gameOver) {
+                    if (arr.indexOf(yourStrength[i]) > -1) {
+                        setwin(true);
                         gameOver = true;
-                        console.log("You Lose!")
+                        setgameScore(gameScore + 1);
+                        console.log("You Win via type!")
                         break;
                     }
                 }
+            } if (!gameOver) {
+                for (let i = 0; i < yourWeakness.length; i++) {
+                    if (!gameOver) {
+                        if (arr.indexOf(yourWeakness[i]) > -1) {
+                            setlose(true);
+                            gameOver = true;
+                            console.log("You Lose via type!")
+                            break;
+                        }
+                    }
+                }
             }
+        } if (!gameOver) {
+            hpCompare();
+            gameOver = true;
         }
     }
+
+    function hpCompare() {
+        const yourHP = yourPokemonData.stats[0].base_stat;
+        const otherHP = randomPokemon.stats[0].base_stat;
+
+
+        if (yourHP < otherHP) {
+            setlose(true);
+            console.log("You lose via low HP");
+
+
+        } else {
+            setwin(true);
+            setgameScore(gameScore + 1);
+            console.log("YOU WIN via HP!!!!");
+
+
+        }
+    }
+
+    let anotherOne = (win) ? <div>
+        <p>You win!</p> <button onClick={getrandomPokemon}>Another One</button></div> :
+        null
+
+    let fightButton = (pokemonReady) ?
+        <button onClick={fight}>Fight!</button> :
+        null
+
+    let tryAgain = (lose) ? <div>
+        <p>You lost!</p><Link to="/"><button>Try Again</button></Link></div> :
+        null
 
     return (
         <div>
@@ -66,7 +122,12 @@ const Play = ({ yourPokemonData, yourTypes, yourWeakness, yourStrength }) => {
 
                     <div className="centerBox">
                         <h1>VS</h1>
-                        <button onClick={fight}>Fight</button>
+                        <p>Score: {gameScore}</p>
+                        {fightButton}
+                        {tryAgain}
+                        {anotherOne}
+
+
                     </div>
 
 
