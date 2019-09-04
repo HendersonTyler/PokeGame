@@ -12,7 +12,7 @@ const Home = ({ setyourPokemon }) => {
     return (
         <div>
             <h2>Choose your Pokemon</h2>
-            <p>Pick a pocket monster, which will battle random pokemon, for you to become the ultimate pokemon master!</p>
+            <p>Search for a pocket monster, which will battle random pokemon, for you to become the ultimate pokemon master!</p>
 
             <form>
                 <input type="text" onChange={update} />

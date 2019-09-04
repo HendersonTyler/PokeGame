@@ -1,9 +1,11 @@
 import React from 'react';
+import logo from './logo.png';
+import './Nav.css';
 
 function Nav() {
     return (
-        <div>
-            <h1>PokeGame</h1>
+        <div className='logo'>
+            <img src={logo} className="z-index: 2;" alt="logo" />
         </div>
     )
 }
