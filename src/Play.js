@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import './Play.css';
+import './index.css';
 import { Link } from 'react-router-dom';
+import Pokeball from './pokeball.gif';
 
-const Play = ({ yourPokemonData, yourWeakness, yourStrength, gameScore, setgameScore }) => {
+const Play = ({ yourPokemonData, yourWeakness, yourStrength, gameScore, setgameScore, setyourPokemonData }) => {
 
 
 
@@ -50,7 +51,6 @@ const Play = ({ yourPokemonData, yourWeakness, yourStrength, gameScore, setgameS
                         setwin(true);
                         gameOver = true;
                         setgameScore(gameScore + 1);
-                        console.log("You Win via type!")
                         break;
                     }
                 }
@@ -60,7 +60,6 @@ const Play = ({ yourPokemonData, yourWeakness, yourStrength, gameScore, setgameS
                         if (arr.indexOf(yourWeakness[i]) > -1) {
                             setlose(true);
                             gameOver = true;
-                            console.log("You Lose via type!")
                             break;
                         }
                     }
@@ -79,28 +78,27 @@ const Play = ({ yourPokemonData, yourWeakness, yourStrength, gameScore, setgameS
 
         if (yourHP < otherHP) {
             setlose(true);
-            console.log("You lose via low HP");
 
 
         } else {
             setwin(true);
             setgameScore(gameScore + 1);
-            console.log("YOU WIN via HP!!!!");
+
 
 
         }
     }
 
     let anotherOne = (win) ? <div>
-        <p>You win!</p> <button onClick={getrandomPokemon}>Another One</button></div> :
+        <p>You win!</p> <button className="button1" onClick={getrandomPokemon}>Another One</button></div> :
         null
 
     let fightButton = (pokemonReady) ?
-        <button onClick={fight}>Fight!</button> :
+        <button className="button1" onClick={fight}>Fight!</button> :
         null
 
     let tryAgain = (lose) ? <div>
-        <p>You lost!</p><Link to="/"><button>Try Again</button></Link></div> :
+        <p>You lost!</p><Link to="/"><button className="button1">Try Again</button></Link></div> :
         null
 
     return (
@@ -122,7 +120,7 @@ const Play = ({ yourPokemonData, yourWeakness, yourStrength, gameScore, setgameS
 
                     <div className="centerBox">
                         <h1>VS</h1>
-                        <p>Score: {gameScore}</p>
+                        <h2>Score: {gameScore}</h2>
                         {fightButton}
                         {tryAgain}
                         {anotherOne}
@@ -147,7 +145,10 @@ const Play = ({ yourPokemonData, yourWeakness, yourStrength, gameScore, setgameS
                 </div>
 
             ) : (
-                    <p>Loading pokemon</p>
+                    <div>
+                        <img src={Pokeball} alt="pokeball" height="40em"></img>
+                        <p>Loading pokemon</p>
+                    </div>
                 )}
         </div>
     )

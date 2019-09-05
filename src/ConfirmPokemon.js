@@ -1,5 +1,7 @@
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import './index.css';
+import Pokeball from './pokeball.gif';
 
 
 const ConfirmPokemon = ({ yourPokemon, setyourPokemonData, yourPokemonData, yourWeakness, yourTypes, setyourWeakness, setyourTypes, setyourStrength, yourStrength, setgameScore }) => {
@@ -8,9 +10,14 @@ const ConfirmPokemon = ({ yourPokemon, setyourPokemonData, yourPokemonData, your
         storePokemonData();
     }, []);
 
+    function isEmptyOrSpaces(str) {
+        return str === null || str.match(/^ *$/) !== null;
+    }
+
     const storePokemonData = async () => {
+        setyourPokemonData('');
         const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${yourPokemon}`);
-        if (response.status === 200) {
+        if (response.status === 200 && !isEmptyOrSpaces(yourPokemon)) {
             const data = await response.json();
             setyourPokemonData(data);
             setyourTypes(data.types);
@@ -51,15 +58,11 @@ const ConfirmPokemon = ({ yourPokemon, setyourPokemonData, yourPokemonData, your
     };
 
 
-
-
-    const name = yourPokemon.charAt(0).toUpperCase() + yourPokemon.slice(1);
-
     return (
-        <div>
+        <div className="container">
             {yourPokemonData && yourWeakness ? (
-                <div>
-                    <h2>{name}</h2>
+                <div className="card">
+                    <h1>{yourPokemon}</h1>
                     <p>Type:{yourTypes.map((feature, i) => {
                         return (
                             ' ' + feature.type.name
@@ -87,13 +90,19 @@ const ConfirmPokemon = ({ yourPokemon, setyourPokemonData, yourPokemonData, your
                     </p>
 
                     <p>HP: {yourPokemonData.stats[0].base_stat}</p>
-                    <img src={yourPokemonData.sprites.front_default} alt="" />
+                    <img src={yourPokemonData.sprites.front_default} className="pokemonPhoto" alt="" />
+
+                    <Link to="/"><button className="button1" type="submit">Choose again</button></Link>
+                    <Link to="/Play"><button className="button1" type="submit">Confirm</button></Link>
                 </div>
             ) : (
-                    <p>Loading pokemon</p>
+                    <div>
+                        <img src={Pokeball} alt="pokeball" height="40em"></img>
+                        <p>Loading pokemon</p>
+                        <Link to="/"><button className="button1" type="submit">Try again</button></Link>
+                    </div>
                 )}
-            <Link to="/"><button type="submit">Choose again</button></Link>
-            <Link to="/Play"><button type="submit">Confirm</button></Link>
+
         </div>
     )
 };

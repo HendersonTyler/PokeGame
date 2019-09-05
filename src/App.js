@@ -121,7 +121,7 @@ const particlesOptions = {
 
 const App = () => {
 
-  const [chosenPokemon, setchosenPokemon] = useState('bulbasaur');
+  const [chosenPokemon, setchosenPokemon] = useState('');
   const [yourPokemonData, setyourPokemonData] = useState();
   const [yourWeakness, setyourWeakness] = useState([]);
   const [yourStrength, setyourStrength] = useState([]);
@@ -141,7 +141,8 @@ const App = () => {
 
 
           <Route path="/" exact
-            render={(props) => <Home setyourPokemon={setchosenPokemon} />}
+            render={(props) => <Home setyourPokemon={setchosenPokemon}
+            />}
           />
 
           <Route path="/ConfirmPokemon"
@@ -160,6 +161,7 @@ const App = () => {
 
           <Route path="/Play"
             render={(props) => <Play
+              setyourPokemonData={setyourPokemonData}
               yourPokemonData={yourPokemonData}
               yourWeakness={yourWeakness}
               yourStrength={yourStrength}
