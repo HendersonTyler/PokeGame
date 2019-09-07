@@ -1,10 +1,9 @@
 import React, { useEffect } from 'react';
-import { Link } from 'react-router-dom';
 import './index.css';
 import Pokeball from './pokeball.gif';
 
 
-const ConfirmPokemon = ({ yourPokemon, setyourPokemonData, yourPokemonData, yourWeakness, yourTypes, setyourWeakness, setyourTypes, setyourStrength, yourStrength, setgameScore }) => {
+const ConfirmPokemon = ({ yourPokemon, setyourPokemonData, yourPokemonData, yourWeakness, yourTypes, setyourWeakness, setyourTypes, setyourStrength, yourStrength, setgameScore, setroute }) => {
 
     useEffect(() => {
         storePokemonData();
@@ -92,14 +91,14 @@ const ConfirmPokemon = ({ yourPokemon, setyourPokemonData, yourPokemonData, your
                     <p>HP: {yourPokemonData.stats[0].base_stat}</p>
                     <img src={yourPokemonData.sprites.front_default} className="pokemonPhoto" alt="" />
 
-                    <Link to="/"><button className="button1" type="submit">Choose again</button></Link>
-                    <Link to="/Play"><button className="button1" type="submit">Confirm</button></Link>
+                    <button onClick={() => { setroute('play') }} className="button1" type="submit">Confirm</button>
+                    <button onClick={() => { setroute('home') }} className="button1" type="submit">Choose again</button>
                 </div>
             ) : (
                     <div>
                         <img src={Pokeball} alt="pokeball" height="40em"></img>
                         <p>Loading pokemon</p>
-                        <Link to="/"><button className="button1" type="submit">Try again</button></Link>
+                        <button onClick={() => { setroute('home') }} className="button1" type="submit">Try again</button>
                     </div>
                 )}
 

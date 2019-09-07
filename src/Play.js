@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import './index.css';
-import { Link } from 'react-router-dom';
 import Pokeball from './pokeball.gif';
 
-const Play = ({ yourPokemonData, yourWeakness, yourStrength, gameScore, setgameScore, setyourPokemonData }) => {
+const Play = ({ yourPokemonData, yourWeakness, yourStrength, gameScore, setgameScore, setroute }) => {
 
 
 
@@ -90,7 +89,7 @@ const Play = ({ yourPokemonData, yourWeakness, yourStrength, gameScore, setgameS
     }
 
     let anotherOne = (win) ? <div>
-        <p>You win!</p> <button className="button1" onClick={getrandomPokemon}>Another One</button></div> :
+        <p>You win!</p> <button className="button1" onClick={getrandomPokemon}>Again</button></div> :
         null
 
     let fightButton = (pokemonReady) ?
@@ -98,7 +97,7 @@ const Play = ({ yourPokemonData, yourWeakness, yourStrength, gameScore, setgameS
         null
 
     let tryAgain = (lose) ? <div>
-        <p>You lost!</p><Link to="/"><button className="button1">Try Again</button></Link></div> :
+        <p>You lost!</p><button onClick={() => { setroute('home') }} className="button1">Play Again</button></div> :
         null
 
     return (

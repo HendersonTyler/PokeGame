@@ -1,10 +1,9 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import './index.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 
-const Home = ({ setyourPokemon }) => {
+const Home = ({ setyourPokemon, setroute }) => {
 
     const update = e => {
         setyourPokemon(e.target.value.toLowerCase());
@@ -17,12 +16,11 @@ const Home = ({ setyourPokemon }) => {
                 <h1>Choose your Pokemon</h1>
                 <p>Search for a pocket monster, which will battle random pokemon, for you to become the ultimate pokemon master!</p>
 
-                <form>
+                <form onSubmit={(event) => { event.preventDefault(); setroute('confirmpokemon') }}>
 
                     <input type="text" onChange={update}></input>
-                    <Link to="/confirmPokemon" >
-                        <i className="fa fa-search" > <FontAwesomeIcon icon={faSearch} /><button className="magic"></button></i>
-                    </Link>
+
+                    <i className="fa fa-search"><FontAwesomeIcon type="button" onClick={() => { setroute('confirmpokemon') }} icon={faSearch} autofocus /></i>
                     <br />
 
                 </form>
