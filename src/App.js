@@ -8,7 +8,6 @@ import './App.css';
 import ParticlesOptions from './ParticlesOptions.json';
 
 
-
 const App = () => {
 
   const [chosenPokemon, setchosenPokemon] = useState('');
@@ -19,76 +18,44 @@ const App = () => {
   const [gameScore, setgameScore] = useState();
   const [route, setroute] = useState('home');
 
+  let homepage = (route === 'home') ? <Home
+    setyourPokemon={setchosenPokemon}
+    setroute={setroute}
+  /> : null
 
+  let confirmpokemonpage = (route === 'confirmpokemon') ? <ConfirmPokemon
+    setyourPokemonData={setyourPokemonData}
+    yourPokemonData={yourPokemonData}
+    yourPokemon={chosenPokemon}
+    yourWeakness={yourWeakness}
+    yourTypes={yourTypes}
+    setyourWeakness={setyourWeakness}
+    setyourTypes={setyourTypes}
+    setyourStrength={setyourStrength}
+    yourStrength={yourStrength}
+    setgameScore={setgameScore}
+    setroute={setroute}
+  /> : null
 
+  let playpage = (route === 'play') ? <Play
+    setyourPokemonData={setyourPokemonData}
+    yourPokemonData={yourPokemonData}
+    yourWeakness={yourWeakness}
+    yourStrength={yourStrength}
+    gameScore={gameScore}
+    setgameScore={setgameScore}
+    setroute={setroute}
+  /> : null
 
-
-  if (route === 'confirmpokemon') {
-    return (
-      <div className="App">
-        <Particles params={ParticlesOptions} className='particles' />
-        <Nav />
-        <ConfirmPokemon
-          setyourPokemonData={setyourPokemonData}
-          yourPokemonData={yourPokemonData}
-          yourPokemon={chosenPokemon}
-          yourWeakness={yourWeakness}
-          yourTypes={yourTypes}
-          setyourWeakness={setyourWeakness}
-          setyourTypes={setyourTypes}
-          setyourStrength={setyourStrength}
-          yourStrength={yourStrength}
-          setgameScore={setgameScore}
-          setroute={setroute}
-        />
-      </div>)
-  } else if (route === 'play') {
-    return (
-      <div className="App">
-        <Particles params={ParticlesOptions} className='particles' />
-        <Nav />
-        <Play
-          setyourPokemonData={setyourPokemonData}
-          yourPokemonData={yourPokemonData}
-          yourWeakness={yourWeakness}
-          yourStrength={yourStrength}
-          gameScore={gameScore}
-          setgameScore={setgameScore}
-          setroute={setroute}
-        />
-      </div>
-    )
-
-  } else {
-    return (
-      <div className="App">
-        <Particles params={ParticlesOptions} className='particles' />
-        <Nav />
-        <Home
-          setyourPokemon={setchosenPokemon}
-          setroute={setroute} />
-      </div>)
-
-  }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  return (
+    <div className="App">
+      <Particles params={ParticlesOptions} className='particles' />
+      <Nav />
+      {homepage}
+      {confirmpokemonpage}
+      {playpage}
+    </div>
+  )
 }
-
-
-
 
 export default App;
