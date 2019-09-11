@@ -5,10 +5,11 @@ import Home from './Home';
 import ConfirmPokemon from './ConfirmPokemon';
 import Play from './Play';
 import './App.css';
+import Leaderboard from './Leaderboard';
 import ParticlesOptions from './ParticlesOptions.json';
 
-
 const App = () => {
+
 
   const [chosenPokemon, setchosenPokemon] = useState('');
   const [yourPokemonData, setyourPokemonData] = useState();
@@ -47,6 +48,12 @@ const App = () => {
     setroute={setroute}
   /> : null
 
+  let leaderboard = (route === 'leaderboard') ? <Leaderboard
+    yourPokemon={chosenPokemon}
+    gameScore={gameScore}
+    setroute={setroute}
+  /> : null
+
   return (
     <div className="App">
       <Particles params={ParticlesOptions} className='particles' />
@@ -54,6 +61,7 @@ const App = () => {
       {homepage}
       {confirmpokemonpage}
       {playpage}
+      {leaderboard}
     </div>
   )
 }

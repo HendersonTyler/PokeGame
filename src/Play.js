@@ -4,8 +4,6 @@ import Pokeball from './pokeball.gif';
 
 const Play = ({ yourPokemonData, yourWeakness, yourStrength, gameScore, setgameScore, setroute }) => {
 
-
-
     useEffect(() => {
         getrandomPokemon();
     }, []);
@@ -14,9 +12,6 @@ const Play = ({ yourPokemonData, yourWeakness, yourStrength, gameScore, setgameS
     const [lose, setlose] = useState(false);
     const [randomPokemon, setrandomPokemon] = useState();
     const [pokemonReady, setpokemonReady] = useState(false);
-
-
-
 
     const getrandomPokemon = async () => {
         let i = Math.floor(Math.random() * Math.floor(807));
@@ -32,7 +27,6 @@ const Play = ({ yourPokemonData, yourWeakness, yourStrength, gameScore, setgameS
         }
 
     };
-
 
     const fight = e => {
 
@@ -97,8 +91,13 @@ const Play = ({ yourPokemonData, yourWeakness, yourStrength, gameScore, setgameS
         null
 
     let tryAgain = (lose) ? <div>
-        <p>You lost!</p><button onClick={() => { setroute('home') }} className="button1">Play Again</button></div> :
-        null
+        <p>You lost!</p><p>You placed x</p>
+        <button onClick={() => { setroute('home') }} className="button1">Play Again</button>
+        <button onClick={() => { setroute('leaderboard') }} className="button1">Submit Score</button>
+
+    </div> : null
+
+
 
     return (
         <div>

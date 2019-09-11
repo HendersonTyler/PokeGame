@@ -20,7 +20,7 @@ const Home = ({ setyourPokemon, setroute }) => {
 
                     <input type="text" onChange={update}></input>
 
-                    <i className="fa fa-search"><FontAwesomeIcon type="button" onClick={() => { setroute('confirmpokemon') }} icon={faSearch} autofocus /></i>
+                    <i className="fa fa-search"><FontAwesomeIcon type="button" onClick={() => { setroute('confirmpokemon') }} icon={faSearch} autoFocus /></i>
                     <br />
 
                 </form>
