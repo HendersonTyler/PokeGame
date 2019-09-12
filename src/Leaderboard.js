@@ -81,7 +81,7 @@ const Leaderboard = ({ yourPokemon, gameScore, setroute }) => {
 
                                 {top.map((x, i) => {
                                     return (
-                                        <tr className="thin" key={i}><th>{i + 1}</th><th>{x.name}</th><th>{x.pokemon}</th><th>{x.tally}</th></tr>
+                                        <tr className="thin" key={i}><th>{i + 1}</th><th>{x.name}</th><th className="cap">{x.pokemon}</th><th>{x.tally}</th></tr>
                                     );
                                 })
                                 }
