@@ -1,4 +1,4 @@
-#PokéGame
+# PokéGame
 
 A Pokemon game, written in React.js using Node.js, Express.js and PostgreSQL. Deployed on Heroku.
 
