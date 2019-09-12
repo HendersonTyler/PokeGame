@@ -93,8 +93,6 @@ const Play = ({ yourPokemonData, yourWeakness, yourStrength, gameScore, setgameS
 
     </div> : null
 
-
-
     return (
         <div>
             {randomPokemon ? (
@@ -118,10 +116,7 @@ const Play = ({ yourPokemonData, yourWeakness, yourStrength, gameScore, setgameS
                         {fightButton}
                         {tryAgain}
                         {anotherOne}
-
-
                     </div>
-
 
                     <div className="card">
                         <h1 className="cap">{randomPokemon.name}</h1>

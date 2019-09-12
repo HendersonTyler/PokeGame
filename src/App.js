@@ -10,7 +10,6 @@ import ParticlesOptions from './ParticlesOptions.json';
 
 const App = () => {
 
-
   const [chosenPokemon, setchosenPokemon] = useState('');
   const [yourPokemonData, setyourPokemonData] = useState();
   const [yourWeakness, setyourWeakness] = useState([]);

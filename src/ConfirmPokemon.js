@@ -2,7 +2,6 @@ import React, { useEffect } from 'react';
 import './index.css';
 import Pokeball from './pokeball.gif';
 
-
 const ConfirmPokemon = ({ yourPokemon, setyourPokemonData, yourPokemonData, yourWeakness, yourTypes, setyourWeakness, setyourTypes, setyourStrength, yourStrength, setgameScore, setroute }) => {
 
     useEffect(() => {
@@ -26,7 +25,6 @@ const ConfirmPokemon = ({ yourPokemon, setyourPokemonData, yourPokemonData, your
             alert("Sorry, we couldn't find that pokemon. Please try again.");
         }
     };
-
 
     const type = async (chosenPokeType) => {
         let h = [];
@@ -55,7 +53,6 @@ const ConfirmPokemon = ({ yourPokemon, setyourPokemonData, yourPokemonData, your
         setyourStrength(w);
         setgameScore(0);
     };
-
 
     return (
         <div className="container">

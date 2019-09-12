@@ -9,7 +9,6 @@ const Home = ({ setyourPokemon, setroute }) => {
         setyourPokemon(e.target.value.toLowerCase());
     };
 
-
     return (
         <div className="container">
             <div className="card">
