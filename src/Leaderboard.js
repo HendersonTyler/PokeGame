@@ -4,7 +4,7 @@ import './index.css';
 const Leaderboard = ({ yourPokemon, gameScore, setroute }) => {
 
     useEffect(() => {
-        fetch('https://stormy-taiga-93399.herokuapp.com/top')
+        fetch(process.env.DATABASETOP)
             .then(response => {
                 if (!response.ok) {
                     throw new Error("HTTP error " + response.status);
@@ -25,7 +25,7 @@ const Leaderboard = ({ yourPokemon, gameScore, setroute }) => {
     };
 
     const onSubmitName = () => {
-        fetch('https://stormy-taiga-93399.herokuapp.com/score', {
+        fetch(process.env.DATABASESCORE, {
             method: 'post',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
