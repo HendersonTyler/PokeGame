@@ -43,19 +43,19 @@ const Leaderboard = ({ yourPokemon, gameScore, setroute }) => {
     }
 
     return (
-        <div className='container'>
-
-            <div className='card'>
-
-                <p>Name: </p>
+        <div className="container wrap">
+            <div className="card">
+                <h1>Submit Score</h1>
                 <input
-                    className="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100"
+                    placeholder="Name"
+                    maxLength="10"
+                    className="input2"
                     type="text"
                     name="name"
                     id="name"
                     onChange={update}
                 />
-                <p>Pokemon: {yourPokemon}</p>
+                <p className="cap">Pokemon: {yourPokemon}</p>
                 <p>Score: {gameScore}</p>
                 <input
                     onClick={onSubmitName}
@@ -65,14 +65,14 @@ const Leaderboard = ({ yourPokemon, gameScore, setroute }) => {
                 />
             </div>
 
-            <div className='card'>
+            <div className="card top">
                 {top ? (
                     <div>
                         <h1>Top 10</h1>
 
                         <table>
                             <tbody>
-                                <tr>
+                                <tr className="bold">
                                     <th>Place</th>
                                     <th>Name</th>
                                     <th>Pokemon</th>
@@ -81,7 +81,7 @@ const Leaderboard = ({ yourPokemon, gameScore, setroute }) => {
 
                                 {top.map((x, i) => {
                                     return (
-                                        <tr key={i}><th>{i + 1}</th><th>{x.name}</th><th>{x.pokemon}</th><th>{x.tally}</th></tr>
+                                        <tr className="thin" key={i}><th>{i + 1}</th><th>{x.name}</th><th>{x.pokemon}</th><th>{x.tally}</th></tr>
                                     );
                                 })
                                 }
@@ -93,7 +93,7 @@ const Leaderboard = ({ yourPokemon, gameScore, setroute }) => {
                         <p>Loading leaderboard...</p>
                     )}
             </div>
-        </div >
+        </div>
     )
 }
 export default Leaderboard;

@@ -68,16 +68,12 @@ const Play = ({ yourPokemonData, yourWeakness, yourStrength, gameScore, setgameS
         const yourHP = yourPokemonData.stats[0].base_stat;
         const otherHP = randomPokemon.stats[0].base_stat;
 
-
         if (yourHP < otherHP) {
             setlose(true);
-
 
         } else {
             setwin(true);
             setgameScore(gameScore + 1);
-
-
 
         }
     }
@@ -91,7 +87,7 @@ const Play = ({ yourPokemonData, yourWeakness, yourStrength, gameScore, setgameS
         null
 
     let tryAgain = (lose) ? <div>
-        <p>You lost!</p><p>You placed x</p>
+        <h2 className="red">You lost!</h2>
         <button onClick={() => { setroute('home') }} className="button1">Play Again</button>
         <button onClick={() => { setroute('leaderboard') }} className="button1">Submit Score</button>
 
@@ -104,7 +100,7 @@ const Play = ({ yourPokemonData, yourWeakness, yourStrength, gameScore, setgameS
             {randomPokemon ? (
                 <div className="container">
                     <div className="card">
-                        <h1>{yourPokemonData.name}</h1>
+                        <h1 className="cap">{yourPokemonData.name}</h1>
                         <p>Type:{yourPokemonData.types.map((feature, i) => {
                             return (
                                 ' ' + feature.type.name
@@ -128,7 +124,7 @@ const Play = ({ yourPokemonData, yourWeakness, yourStrength, gameScore, setgameS
 
 
                     <div className="card">
-                        <h1>{randomPokemon.name}</h1>
+                        <h1 className="cap">{randomPokemon.name}</h1>
 
                         <p>Type:{randomPokemon.types.map((feature, i) => {
                             return (

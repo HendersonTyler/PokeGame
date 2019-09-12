@@ -61,7 +61,7 @@ const ConfirmPokemon = ({ yourPokemon, setyourPokemonData, yourPokemonData, your
         <div className="container">
             {yourPokemonData && yourWeakness ? (
                 <div className="card">
-                    <h1>{yourPokemon}</h1>
+                    <h1 className="cap">{yourPokemon}</h1>
                     <p>Type:{yourTypes.map((feature, i) => {
                         return (
                             ' ' + feature.type.name

@@ -1,11 +1,11 @@
 import React from 'react';
 import logo from './logo.png';
-import './Nav.css';
+import './index.css';
 
 function Nav() {
     return (
         <div className='logo'>
-            <img src={logo} className="z-index: 2;" alt="logo" />
+            <img src={logo} className="icon" alt="logo" />
         </div>
     )
 }

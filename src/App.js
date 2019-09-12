@@ -4,7 +4,7 @@ import Nav from './Nav';
 import Home from './Home';
 import ConfirmPokemon from './ConfirmPokemon';
 import Play from './Play';
-import './App.css';
+import './index.css';
 import Leaderboard from './Leaderboard';
 import ParticlesOptions from './ParticlesOptions.json';
 
@@ -56,7 +56,7 @@ const App = () => {
 
   return (
     <div className="App">
-      <Particles params={ParticlesOptions} className='particles' />
+      <Particles params={ParticlesOptions} className="particles" />
       <Nav />
       {homepage}
       {confirmpokemonpage}
