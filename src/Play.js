@@ -89,7 +89,7 @@ const Play = ({ yourPokemonData, yourWeakness, yourStrength, gameScore, setgameS
     let tryAgain = (lose) ? <div>
         <h2 className="red">You lost!</h2>
         <button onClick={() => { setroute('home') }} className="button1">Play Again</button>
-        <button onClick={() => { setroute('leaderboard') }} className="button1">Submit Score</button>
+        <button onClick={() => { setroute('submitscore') }} className="button1">Submit Score</button>
 
     </div> : null
 

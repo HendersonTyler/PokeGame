@@ -1,5 +1,20 @@
 import React, { useState, useEffect } from 'react';
 import './index.css';
+import Pokeball from './pokeball.gif';
+import {
+    FacebookShareButton,
+    LinkedinShareButton,
+    TwitterShareButton,
+    RedditShareButton,
+    EmailShareButton,
+} from 'react-share';
+import {
+    FacebookIcon,
+    TwitterIcon,
+    LinkedinIcon,
+    RedditIcon,
+    EmailIcon,
+} from 'react-share';
 
 const Leaderboard = ({ yourPokemon, gameScore, setroute }) => {
 
@@ -17,53 +32,11 @@ const Leaderboard = ({ yourPokemon, gameScore, setroute }) => {
 
     }, []);
 
-    const [playername, setplayername] = useState('');
     const [top, settop] = useState();
-
-    const update = e => {
-        setplayername(e.target.value);
-    };
-
-    const onSubmitName = () => {
-        fetch('https://stormy-taiga-93399.herokuapp.com/score', {
-            method: 'post',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-                name: playername,
-                pokemon: yourPokemon,
-                tally: gameScore
-            })
-        })
-            .then(response => response.json())
-            .then(user => {
-                if (user) {
-                    setroute('home');
-                }
-            })
-    }
+    const shareUrl = 'https://poke-game.herokuapp.com';
 
     return (
         <div className="container wrap">
-            <div className="card">
-                <h1>Submit Score</h1>
-                <input
-                    placeholder="Name"
-                    maxLength="10"
-                    className="input2"
-                    type="text"
-                    name="name"
-                    id="name"
-                    onChange={update}
-                />
-                <p className="cap">Pokemon: {yourPokemon}</p>
-                <p>Score: {gameScore}</p>
-                <input
-                    onClick={onSubmitName}
-                    className="button1"
-                    type="submit"
-                    value="Submit"
-                />
-            </div>
 
             <div className="card top">
                 {top ? (
@@ -88,9 +61,38 @@ const Leaderboard = ({ yourPokemon, gameScore, setroute }) => {
 
                             </tbody>
                         </table>
+                        <h2>Compete against your friends!</h2>
+                        See if your friends can beat
+                            {gameScore ? (' ' + gameScore + '.'
+                        ) : (
+                                ' your score.'
+                            )}
+                        <div className="sharebuttons">
+                            <FacebookShareButton url={shareUrl}><FacebookIcon size={32} round={true} /></FacebookShareButton>
+                            <TwitterShareButton url={shareUrl}><TwitterIcon size={32} round={true} /></TwitterShareButton>
+                            <RedditShareButton url={shareUrl}><RedditIcon size={32} round={true} /></RedditShareButton>
+                            <LinkedinShareButton url={shareUrl}><LinkedinIcon size={32} round={true} /></LinkedinShareButton>
+                            <EmailShareButton url={shareUrl}><EmailIcon size={32} round={true} /></EmailShareButton>
+                        </div>
+                        <input
+                            onClick={() => { setroute('home') }}
+                            className="button1"
+                            type="submit"
+                            value="Try Again"
+                        />
                     </div>
                 ) : (
-                        <p>Loading leaderboard...</p>
+                        <div>
+                            <img src={Pokeball} alt="pokeball" height="40em"></img>
+                            <p>Loading leaderboard...</p>
+                            <input
+                                onClick={() => { setroute('home') }}
+                                className="button1"
+                                type="submit"
+                                value="Home"
+                            />
+
+                        </div>
                     )}
             </div>
         </div>

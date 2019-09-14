@@ -247,12 +247,91 @@ th {
 
 }
 
-.footer {
-  margin-top: auto;
-  padding-top: 10%;
-}
-
 a:link,
 a:visited {
   color: white;
+}
+
+/* Side Bar */
+
+.bm-burger-button {
+  position: fixed;
+  width: 18px;
+  height: 15px;
+}
+
+@media all and (min-width: 500px) {
+  .bm-burger-button {
+    left: 36px;
+    top: 36px;
+  }
+}
+
+@media all and (max-width: 500px) {
+  .bm-burger-button {
+    left: 36px;
+    top: 100px;
+  }
+}
+
+.bm-burger-bars {
+  background: #FFF;
+}
+
+.bm-burger-bars-hover {
+  background: yellow;
+}
+
+.bm-cross-button {
+  height: 24px;
+  width: 24px;
+}
+
+.bm-cross {
+  background: #FFF;
+}
+
+.bm-menu-wrap {
+  position: fixed;
+  height: 100%;
+}
+
+.bm-menu {
+  background: rgba(67, 164, 239, 1) 0%;
+  padding: 5em 1.5em 0;
+  font-size: 1.15em;
+}
+
+.bm-morph-shape {
+  fill: #373a47;
+}
+
+.bm-item-list {
+  color: #b8b7ad;
+}
+
+.bm-item {
+  display: inline-block;
+}
+
+.bm-overlay {
+  background: rgba(0, 0, 0, 0.3);
+}
+
+.menu-item {
+  cursor: pointer;
+  color: white;
+  text-decoration: underline;
+
+}
+
+.menu-item h2 {
+  padding-bottom: 20vh;
+}
+
+.sharebuttons {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-evenly;
+  padding: 1em;
 }
