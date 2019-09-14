@@ -61,6 +61,7 @@ const App = () => {
       {confirmpokemonpage}
       {playpage}
       {leaderboard}
+      <footer className="footer"><a href="https://github.com/HendersonTyler/">GitHub</a></footer>
     </div>
   )
 }

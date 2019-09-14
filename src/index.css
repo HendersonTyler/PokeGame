@@ -245,3 +245,17 @@ th {
   }
 
 }
+
+
+.footer {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 4px;
+}
+
+a:link,
+a:visited {
+  color: white;
+}
