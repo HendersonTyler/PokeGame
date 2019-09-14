@@ -55,6 +55,7 @@ const App = () => {
 
   return (
     <div className="App">
+
       <Particles params={ParticlesOptions} className="particles" />
       <Nav />
       {homepage}
@@ -62,6 +63,7 @@ const App = () => {
       {playpage}
       {leaderboard}
       <footer className="footer"><a href="https://github.com/HendersonTyler/">GitHub</a></footer>
+
     </div>
   )
 }
