@@ -67,14 +67,16 @@ const App = () => {
 
   return (
     <div className="App">
-      <Menu disableAutoFocus
-        isOpen={menuOpen}
-        onStateChange={() => setmenuOpen()}
-      >
-        <a id="home" href="/#" className="menu-item" onClick={() => { setmenuOpen(false); setroute('home') }}><FontAwesomeIcon type="button" icon={faHome} /><h2>Home</h2></a>
-        <a id="leaderboard" href="/#" className="menu-item" onClick={() => { setmenuOpen(false); setroute('leaderboard') }}><FontAwesomeIcon type="button" icon={faList} /><h2>Leaderboard</h2></a>
-        <a id="github" className="menu-item" href="https://github.com/HendersonTyler/"><FontAwesomeIcon type="button" icon={faGithub} /><h2>GitHub</h2></a>
-      </Menu>
+      <div className="header">
+        <Menu disableAutoFocus
+          isOpen={menuOpen}
+          onStateChange={() => setmenuOpen()}
+        >
+          <a id="home" href="/#" className="menu-item" onClick={() => { setmenuOpen(false); setroute('home') }}><FontAwesomeIcon type="button" icon={faHome} /><h2>Home</h2></a>
+          <a id="leaderboard" href="/#" className="menu-item" onClick={() => { setmenuOpen(false); setroute('leaderboard') }}><FontAwesomeIcon type="button" icon={faList} /><h2>Leaderboard</h2></a>
+          <a id="github" className="menu-item" href="https://github.com/HendersonTyler/"><FontAwesomeIcon type="button" icon={faGithub} /><h2>GitHub</h2></a>
+        </Menu>
+      </div>
       <Particles params={ParticlesOptions} className="particles" />
       <Nav />
       {homepage}

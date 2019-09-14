@@ -255,7 +255,7 @@ a:visited {
 /* Side Bar */
 
 .bm-burger-button {
-  position: fixed;
+  position: absolute;
   width: 18px;
   height: 15px;
 }
@@ -269,8 +269,12 @@ a:visited {
 
 @media all and (max-width: 500px) {
   .bm-burger-button {
-    left: 36px;
-    top: 100px;
+    left: 26px;
+    top: 26px;
+  }
+
+  .header {
+    height: 46px;
   }
 }
 
