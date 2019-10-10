@@ -35,7 +35,6 @@ const Play = ({ yourPokemonData, yourWeakness, yourStrength, gameScore, setgameS
         let gameOver = false;
         setpokemonReady(false);
 
-
         for (let x = 0; x < enemyType.length; x++) {
             let arr = enemyType[x].type.name;
             for (let i = 0; i < yourStrength.length; i++) {
