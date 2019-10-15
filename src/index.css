@@ -334,4 +334,5 @@ a:visited {
   flex-wrap: nowrap;
   justify-content: space-evenly;
   padding: 1em;
+  cursor: pointer;
 }

@@ -19,8 +19,8 @@ const ConfirmPokemon = ({ yourPokemon, setyourPokemonData, yourPokemonData, your
         };
         storePokemonData();
         const type = async (chosenPokeType) => {
-            let h = [];
-            let w = [];
+            let weak = [];
+            let stren = [];
 
             for (let i = 0; i < chosenPokeType.length; i++) {
                 const response = await fetch(`https://pokeapi.co/api/v2/type/${chosenPokeType[i].type.name}`)
@@ -29,18 +29,18 @@ const ConfirmPokemon = ({ yourPokemon, setyourPokemonData, yourPokemonData, your
                     let z = data.damage_relations.double_damage_from;
                     let b = data.damage_relations.double_damage_to;
                     for (let q = 0; q < z.length; q++) {
-                        h.push(z[q].name);
+                        weak.push(z[q].name);
                     }
                     for (let l = 0; l < b.length; l++) {
-                        w.push(b[l].name);
+                        stren.push(b[l].name);
 
                     }
                 } else {
                     alert("Sorry, we couldn't find the stats");
                 }
             }
-            setyourWeakness(h);
-            setyourStrength(w);
+            setyourWeakness(weak);
+            setyourStrength(stren);
             setgameScore(0);
         };
     }, [setyourPokemonData, setyourTypes, yourPokemon, setgameScore, setyourStrength, setyourWeakness]);
@@ -48,9 +48,6 @@ const ConfirmPokemon = ({ yourPokemon, setyourPokemonData, yourPokemonData, your
     function isEmptyOrSpaces(str) {
         return str === null || str.match(/^ *$/) !== null;
     }
-
-
-
 
 
     return (
