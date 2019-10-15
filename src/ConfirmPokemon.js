@@ -25,20 +25,18 @@ const ConfirmPokemon = ({ yourPokemon, setyourPokemonData, yourPokemonData, your
             for (let i = 0; i < chosenPokeType.length; i++) {
                 const response = await fetch(`https://pokeapi.co/api/v2/type/${chosenPokeType[i].type.name}`)
                 if (response.status === 200) {
-                    if (response.status === 200) {
-                        const data = await response.json();
-                        let z = data.damage_relations.double_damage_from;
-                        let b = data.damage_relations.double_damage_to;
-                        for (let q = 0; q < z.length; q++) {
-                            h.push(z[q].name);
-                        }
-                        for (let l = 0; l < b.length; l++) {
-                            w.push(b[l].name);
-
-                        }
-                    } else {
-                        alert("Sorry, we couldn't find the stats");
+                    const data = await response.json();
+                    let z = data.damage_relations.double_damage_from;
+                    let b = data.damage_relations.double_damage_to;
+                    for (let q = 0; q < z.length; q++) {
+                        h.push(z[q].name);
                     }
+                    for (let l = 0; l < b.length; l++) {
+                        w.push(b[l].name);
+
+                    }
+                } else {
+                    alert("Sorry, we couldn't find the stats");
                 }
             }
             setyourWeakness(h);
